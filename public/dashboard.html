@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budgy - Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        alexandria: ['Alexandria', 'sans-serif'],
+                    },
+                    colors: {
+                        glass: "rgba(255, 255, 255, 0.25)",
+                        glassBorder: "rgba(255, 255, 255, 0.5)",
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="/css/style.css" rel="stylesheet">
+    <style>
+        .sidebar-item.active {
+            background: rgba(255, 255, 255, 0.6);
+            border-left: 4px solid #4F46E5;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-gray-100 dark:bg-gray-900 font-alexandria text-gray-800 dark:text-gray-100 min-h-screen flex overflow-x-hidden transition-colors duration-300">
+
+    <!-- Sidebar -->
+    <aside id="sidebar"
+        class="w-64 bg-white/70 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl border border-gray-200/60 dark:border-gray-700/60 m-4 flex flex-col justify-between md:flex h-[calc(100vh-2rem)] fixed md:relative z-50 transition-transform duration-300 ease-in-out sidebar-closed">
+        <div>
+            <div class="p-6 text-center border-b border-white/30 dark:border-white/10">
+                <a href="/"
+                    class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400">Budgy</a>
+            </div>
+            <nav class="mt-6 flex flex-col gap-2 px-2">
+                <button id="nav-account" onclick="loadSection('account')"
+                    class="sidebar-item p-3 rounded-lg text-left hover:bg-white/40 dark:hover:bg-white/10 transition flex items-center gap-3">
+                    <span class="w-5 text-center"><i class="fa-solid fa-user"></i></span> Admin Account
+                </button>
+                <button id="nav-goals" onclick="loadSection('goals')"
+                    class="sidebar-item p-3 rounded-lg text-left hover:bg-white/40 dark:hover:bg-white/10 transition flex items-center gap-3">
+                    <span class="w-5 text-center"><i class="fa-solid fa-bullseye"></i></span> Goals
+                </button>
+                <button id="nav-tasks" onclick="loadSection('tasks')"
+                    class="sidebar-item p-3 rounded-lg text-left hover:bg-white/40 dark:hover:bg-white/10 transition flex items-center gap-3">
+                    <span class="w-5 text-center"><i class="fa-solid fa-list-check"></i></span> Tasks
+                </button>
+                <button id="nav-events" onclick="loadSection('events')"
+                    class="sidebar-item p-3 rounded-lg text-left hover:bg-white/40 dark:hover:bg-white/10 transition flex items-center gap-3">
+                    <span class="w-5 text-center"><i class="fa-solid fa-calendar-days"></i></span> Events
+                </button>
+                <button id="nav-obstacles" onclick="loadSection('obstacles')"
+                    class="sidebar-item p-3 rounded-lg text-left hover:bg-white/40 dark:hover:bg-white/10 transition flex items-center gap-3">
+                    <span class="w-5 text-center"><i class="fa-solid fa-triangle-exclamation"></i></span> Obstacles
+                </button>
+                <button id="nav-finance" onclick="loadSection('finance')"
+                    class="sidebar-item p-3 rounded-lg text-left hover:bg-white/40 dark:hover:bg-white/10 transition flex items-center gap-3">
+                    <span class="w-5 text-center"><i class="fa-solid fa-wallet"></i></span> Finance
+                </button>
+                <button id="nav-buysell" onclick="loadSection('buysell')"
+                    class="sidebar-item p-3 rounded-lg text-left hover:bg-white/40 dark:hover:bg-white/10 transition flex items-center gap-3">
+                    <span class="w-5 text-center"><i class="fa-solid fa-bag-shopping"></i></span> Buy & Sell
+                </button>
+            </nav>
+        </div>
+
+        <div class="p-4 border-t border-white/30 dark:border-white/10 flex flex-col gap-2">
+            <div class="flex gap-2">
+                <button onclick="toggleTheme()" id="themeToggleSidebar"
+                    class="flex-1 p-2 rounded-lg hover:bg-white/40 dark:hover:bg-white/10 transition flex items-center justify-center gap-2 text-xs font-bold border border-white/20 dark:border-white/10">
+                    <span><i class="fa-solid fa-moon"></i></span> Dark
+                </button>
+                <button onclick="toggleLanguage()"
+                    class="flex-1 p-2 rounded-lg hover:bg-white/40 dark:hover:bg-white/10 transition flex items-center justify-center gap-2 text-xs font-bold border border-white/20 dark:border-white/10">
+                    <span><i class="fa-solid fa-globe"></i></span> AR/EN
+                </button>
+            </div>
+            <button onclick="logout()"
+                class="p-2 rounded-lg hover:bg-red-100 dark:hover:bg-red-900/30 text-red-600 dark:text-red-400 transition flex items-center gap-2 w-full justify-center">
+                <span><i class="fa-solid fa-right-from-bracket"></i></span> Sign Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- SideBar Mobile Overlay -->
+    <div id="mobileMenuOverlay" onclick="toggleMobileMenu()"
+        class="fixed inset-0 bg-black/50 z-40 opacity-0 pointer-events-none md:hidden transition-opacity duration-300">
+    </div>
+
+    <!-- Mobile Header -->
+    <div
+        class="md:hidden fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-800/90 backdrop-blur-md border-b border-gray-200/60 dark:border-gray-700/60 p-4 flex justify-between items-center text-gray-800 dark:text-white">
+        <span class="font-bold text-lg">Budgy Dashboard</span>
+        <button onclick="toggleMobileMenu()" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10"><i
+                class="fa-solid fa-bars"></i></button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-4 md:p-8 overflow-y-auto mt-16 md:mt-0 h-screen">
+        <header class="flex justify-between items-center mb-8">
+            <h1 id="pageTitle" class="text-3xl font-bold dark:text-white">Welcome Back</h1>
+            <a href="/"
+                class="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50 rounded-xl dark:text-white px-4 py-2 text-sm hover:scale-105 transition">
+                <i class="fa-solid fa-hourglass-half"></i> Countdown
+            </a>
+        </header>
+
+        <!-- Dynamic Content injected here -->
+        <div id="contentArea" class="grid gap-6">
+            <!-- Content will be loaded via JS -->
+        </div>
+    </main>
+
+    <!-- Universal Modal -->
+    <div id="universalModal"
+        class="hidden fixed inset-0 z-[60] flex items-center justify-center bg-black/40 backdrop-blur-sm transition-opacity duration-300">
+        <div
+            class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-2xl w-full max-w-md relative border border-white/20 dark:border-white/10 frost-card transition-transform duration-300">
+            <button onclick="closeModal()"
+                class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition">✕</button>
+            <h3 id="modalTitle" class="text-2xl font-bold mb-4 text-gray-800 dark:text-white"></h3>
+            <div id="modalBody" class="mb-6 text-gray-600 dark:text-gray-300"></div>
+            <div id="modalActions" class="flex justify-end gap-3">
+                <button id="modalCancel" onclick="closeModal()"
+                    class="px-4 py-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 transition">Cancel</button>
+                <button id="modalConfirm"
+                    class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition shadow-md">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/dashboard.js"></script>
+    <script>
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('mobileMenuOverlay');
+            const isOpen = !sidebar.classList.contains('sidebar-closed');
+
+            if (isOpen) {
+                sidebar.classList.add('sidebar-closed');
+                overlay.classList.remove('opacity-100', 'pointer-events-auto');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+            } else {
+                sidebar.classList.remove('sidebar-closed');
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                overlay.classList.add('opacity-100', 'pointer-events-auto');
+            }
+        }
+        function logout() {
+            localStorage.removeItem('user');
+            window.location.href = '/';
+        }
+    </script>
+</body>
+
+</html>

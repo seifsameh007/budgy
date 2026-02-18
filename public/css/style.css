@@ -1,0 +1,304 @@
+/* === Custom Date Picker === */
+.custom-date-input {
+    position: relative;
+    cursor: pointer;
+}
+
+.custom-date-input input[type="text"] {
+    cursor: pointer;
+}
+
+.date-picker-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 12px;
+    border: 1px solid rgba(200, 200, 220, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    padding: 12px;
+    z-index: 100;
+    animation: datePickerIn 0.2s ease-out;
+}
+
+.dark .date-picker-dropdown {
+    background: rgba(30, 41, 59, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes datePickerIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes congratsIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes congratsBounce {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+
+    70% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.date-picker-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    padding: 0 4px;
+}
+
+.date-picker-header button {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+    font-size: 14px;
+    color: #6366f1;
+}
+
+.date-picker-header button:hover {
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.dark .date-picker-header button {
+    color: #a5b4fc;
+}
+
+.dark .date-picker-header button:hover {
+    background: rgba(165, 180, 252, 0.1);
+}
+
+.date-picker-header span {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #1e293b;
+}
+
+.dark .date-picker-header span {
+    color: #e2e8f0;
+}
+
+.date-picker-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.date-picker-weekdays span {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #94a3b8;
+    padding: 4px 0;
+}
+
+.date-picker-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+}
+
+.date-picker-days button {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #334155;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark .date-picker-days button {
+    color: #cbd5e1;
+}
+
+.date-picker-days button:hover {
+    background: rgba(99, 102, 241, 0.15);
+    color: #4f46e5;
+}
+
+.dark .date-picker-days button:hover {
+    background: rgba(165, 180, 252, 0.15);
+    color: #a5b4fc;
+}
+
+.date-picker-days button.selected {
+    background: #4f46e5;
+    color: white !important;
+    font-weight: 700;
+}
+
+.date-picker-days button.today {
+    border: 2px solid #4f46e5;
+}
+
+.dark .date-picker-days button.today {
+    border-color: #818cf8;
+}
+
+.date-picker-days button.other-month {
+    color: #cbd5e1;
+}
+
+.dark .date-picker-days button.other-month {
+    color: #475569;
+}
+
+/* === Blob Animation === */
+@keyframes blob {
+    0% {
+        transform: translate(0px, 0px) scale(1);
+    }
+
+    33% {
+        transform: translate(30px, -50px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+
+    100% {
+        transform: translate(0px, 0px) scale(1);
+    }
+}
+
+.animate-blob {
+    animation: blob 7s infinite ease-in-out;
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
+
+/* === Glass Effect === */
+.glass {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+}
+
+/* === Liquid Glass Effect === */
+.liquid-glass {
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow:
+        inset 0 0 20px rgba(255, 255, 255, 0.5),
+        0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+/* === Dark Mode Frosted Glass === */
+.dark .frost-card {
+    background: rgba(30, 41, 59, 0.5) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.dark .frost-item {
+    background: rgba(51, 65, 85, 0.4) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+/* === Mobile Responsive Blob Fixes === */
+@media (max-width: 768px) {
+    .animate-blob {
+        width: 10rem !important;
+        height: 10rem !important;
+    }
+}
+
+/* === Sidebar Position & Slide (direction-aware) === */
+
+/* Desktop: sidebar goes to the end of the flex row */
+@media (min-width: 768px) {
+    #sidebar {
+        order: 2;
+    }
+
+    main {
+        order: 1;
+    }
+
+    #sidebar.sidebar-closed {
+        transform: translateX(0) !important;
+    }
+}
+
+/* Mobile: explicit positioning */
+@media (max-width: 767px) {
+
+    /* LTR (English): sidebar on the RIGHT */
+    #sidebar {
+        right: 0;
+        left: auto;
+    }
+
+    /* RTL (Arabic): sidebar on the LEFT */
+    html[dir="rtl"] #sidebar {
+        left: 0;
+        right: auto;
+    }
+}
+
+/* Slide animation: LTR slides off to the RIGHT */
+#sidebar.sidebar-closed {
+    transform: translateX(120%);
+}
+
+/* Slide animation: RTL slides off to the LEFT */
+html[dir="rtl"] #sidebar.sidebar-closed {
+    transform: translateX(-120%);
+}

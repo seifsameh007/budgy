@@ -1,0 +1,109 @@
+{
+  "1771387265170": {
+    "events": [
+      {
+        "id": "1771392322931",
+        "title": "رمضان",
+        "startDate": "2026-02-19",
+        "endDate": "2026-03-19"
+      },
+      {
+        "id": "1771392343748",
+        "title": "تصوير Golf House",
+        "startDate": "2026-02-11",
+        "endDate": "2026-02-13"
+      }
+    ],
+    "assets": [
+      {
+        "id": "1771392474183",
+        "name": "PC",
+        "amount": 55000,
+        "date": "18/02/2026",
+        "source": "manual"
+      },
+      {
+        "id": "1771392491831",
+        "name": "iPhone 14 Pro Max",
+        "amount": 45000,
+        "date": "18/02/2026",
+        "source": "manual"
+      }
+    ],
+    "debts": [
+      {
+        "id": "1771392512717",
+        "name": "Qnb Credit **** 2666",
+        "amount": 5000,
+        "date": "18/02/2026",
+        "source": "manual"
+      },
+      {
+        "id": "1771392529342",
+        "name": "Mom",
+        "amount": 3500,
+        "date": "18/02/2026",
+        "source": "manual"
+      }
+    ],
+    "goals": [
+      {
+        "id": "1771394366204",
+        "title": "Buy Car 700K",
+        "completed": false
+      }
+    ],
+    "tasks": [
+      {
+        "id": "1771394936047",
+        "title": "اتعلم AE",
+        "completed": false
+      }
+    ],
+    "buyList": [
+      {
+        "id": "1771450660330",
+        "name": "AIRPODS PRO 3",
+        "amount": "9500"
+      },
+      {
+        "id": "1771449241967",
+        "name": "MACBOOK M2/M3",
+        "amount": "50000"
+      },
+      {
+        "id": "1771449222807",
+        "name": "شاشة ثنائيه",
+        "amount": "3000",
+        "completed": false
+      }
+    ],
+    "sellList": [
+      {
+        "id": "1771449253223",
+        "name": "RX 5500XT",
+        "amount": "5000"
+      },
+      {
+        "id": "1771449264206",
+        "name": "HYPER X QUADCAST",
+        "amount": "3500"
+      },
+      {
+        "id": "1771449276692",
+        "name": "NZXT CASE",
+        "amount": "2500"
+      },
+      {
+        "id": "1771449292357",
+        "name": "AIO ASUS STRIX 120LC",
+        "amount": "1500"
+      },
+      {
+        "id": "1771449315425",
+        "name": "16 GB RAM DDR3 2666HZ",
+        "amount": "2000"
+      }
+    ]
+  }
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budgy - Countdown</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        alexandria: ['Alexandria', 'sans-serif'],
+                    },
+                    colors: {
+                        glass: "rgba(255, 255, 255, 0.25)",
+                        glassBorder: "rgba(255, 255, 255, 0.5)",
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="/css/style.css" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body
+    class="bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 min-h-screen flex flex-col items-center justify-center font-alexandria text-white overflow-hidden relative">
+
+    <!-- Background Blobs -->
+    <div
+        class="absolute top-0 left-0 w-64 h-64 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob">
+    </div>
+    <div
+        class="absolute top-0 right-0 w-64 h-64 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000">
+    </div>
+    <div
+        class="absolute -bottom-8 left-20 w-64 h-64 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000">
+    </div>
+
+    <!-- Toggle & Auth -->
+    <nav class="absolute top-0 w-full p-6 flex justify-between items-center z-50">
+        <button id="themeToggle" class="glass px-4 py-2 rounded-full hover:bg-white/20 transition">
+            <span id="themeIcon">🌙</span>
+        </button>
+        <div class="flex gap-4">
+            <button onclick="showAuth('signin')" class="glass px-6 py-2 rounded-full hover:bg-white/20 transition">Sign
+                In</button>
+            <button onclick="showAuth('signup')"
+                class="bg-white text-indigo-600 px-6 py-2 rounded-full hover:bg-gray-100 transition font-bold shadow-lg">Sign
+                Up</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="z-10 text-center px-4 w-full max-w-4xl">
+        <h1 class="text-5xl md:text-7xl font-bold mb-8 drop-shadow-lg">Wait for it...</h1>
+
+        <!-- Countdown -->
+        <div class="liquid-glass p-8 md:p-12 mb-12">
+            <div id="countdown" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-8">
+                <!-- Time Units -->
+                <div class="flex flex-col">
+                    <span id="months" class="text-4xl md:text-6xl font-bold">00</span>
+                    <span class="text-sm uppercase tracking-wider opacity-80">Months</span>
+                </div>
+                <!-- ... other units added via JS or static for structure -->
+                <div class="flex flex-col">
+                    <span id="weeks" class="text-4xl md:text-6xl font-bold">00</span>
+                    <span class="text-sm uppercase tracking-wider opacity-80">Weeks</span>
+                </div>
+                <div class="flex flex-col">
+                    <span id="days" class="text-4xl md:text-6xl font-bold">00</span>
+                    <span class="text-sm uppercase tracking-wider opacity-80">Days</span>
+                </div>
+                <div class="flex flex-col">
+                    <span id="hours" class="text-4xl md:text-6xl font-bold">00</span>
+                    <span class="text-sm uppercase tracking-wider opacity-80">Hours</span>
+                </div>
+                <div class="flex flex-col">
+                    <span id="minutes" class="text-4xl md:text-6xl font-bold">00</span>
+                    <span class="text-sm uppercase tracking-wider opacity-80">Minutes</span>
+                </div>
+                <div class="flex flex-col">
+                    <span id="seconds" class="text-4xl md:text-6xl font-bold">00</span>
+                    <span class="text-sm uppercase tracking-wider opacity-80">Seconds</span>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-xl md:text-2xl font-light opacity-90">Until 01/12/2026</p>
+    </main>
+
+    <!-- Auth Modal (Hidden by default) -->
+    <div id="authModal"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm hidden text-gray-800">
+        <div
+            class="bg-white/80 backdrop-blur-xl p-8 rounded-3xl shadow-2xl w-full max-w-md relative border border-white/50">
+            <button onclick="closeAuth()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800">✕</button>
+
+            <div id="authContent">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+    <script src="/js/auth.js"></script>
+</body>
+
+</html>
