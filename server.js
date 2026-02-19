@@ -23,6 +23,15 @@ mongoose.connect(process.env.MONGODB_URI)
 
 // ─── Routes ───────────────────────────────────────────────
 
+// Health check (for debugging Vercel)
+app.get('/api/health', (req, res) => {
+    res.json({
+        mongoUriSet: !!process.env.MONGODB_URI,
+        dbState: mongoose.connection.readyState,
+        // 0=disconnected, 1=connected, 2=connecting, 3=disconnecting
+    });
+});
+
 // Register
 app.post('/api/register', async (req, res) => {
     try {
